@@ -80,11 +80,15 @@ function App() {
         )}
       </div>
 
-      <ul className="mt-4">
-        {goods.map(item => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
+      <table className="table mt-4 is-fullwidth">
+        <tbody>
+          {goods.map(item => (
+            <tr key={item}>
+              <td>{item}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
