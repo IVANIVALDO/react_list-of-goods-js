@@ -55,28 +55,24 @@ describe('Goods sorting', () => {
   });
 
   it('Reset button restores the original order', () => {
-    // Ordena primeiro para o botão reset aparecer
+    let originalOrder = [];
+
+    // Captura a ordem original antes de qualquer ação
+    cy.get('tbody tr td:first-child').then($cells => {
+      originalOrder = [...$cells].map(td => td.innerText);
+    });
+
+    // Ordena para o botão reset aparecer
     cy.get('button[data-cy="sort-alphabetically"]').click();
 
-    // Garantir que o botão reset está visível antes de clicar
+    // Garante que o botão reset está visível e clica
     cy.get('button[data-cy="reset"]').should('be.visible').click();
 
+    // Verifica se a ordem atual é igual à original capturada
     cy.get('tbody tr td:first-child').then($cells => {
       const texts = [...$cells].map(td => td.innerText);
-      const original = [
-        'Dumplings',
-        'Carrot',
-        'Eggs',
-        'Ice cream',
-        'Apple',
-        'Bread',
-        'Fish',
-        'Honey',
-        'Jam',
-        'Garlic',
-      ];
 
-      expect(texts).to.deep.equal(original);
+      expect(texts).to.deep.equal(originalOrder);
     });
 
     // Após clicar, botão reset deve sumir
