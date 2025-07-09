@@ -16,7 +16,7 @@ const originalGoods = [
 
 function App() {
   const [goods, setGoods] = useState([...originalGoods]);
-  const [activeSort, setActiveSort] = useState(null); // 'alphabetically' | 'by-length' | 'reverse' | null
+  const [activeSort, setActiveSort] = useState(null);
 
   const sortAlphabetically = () => {
     setGoods([...goods].sort());
@@ -44,9 +44,7 @@ function App() {
         <button
           type="button"
           data-cy="sort-alphabetically"
-          className={`button ${
-            activeSort === 'alphabetically' ? 'is-primary' : 'is-light'
-          }`}
+          className={`button ${activeSort === 'alphabetically' ? 'is-primary' : 'is-light'}`}
           onClick={sortAlphabetically}
         >
           Sort alphabetically
@@ -55,9 +53,7 @@ function App() {
         <button
           type="button"
           data-cy="sort-by-length"
-          className={`button ${
-            activeSort === 'by-length' ? 'is-primary' : 'is-light'
-          }`}
+          className={`button ${activeSort === 'by-length' ? 'is-primary' : 'is-light'}`}
           onClick={sortByLength}
         >
           Sort by length
@@ -66,9 +62,7 @@ function App() {
         <button
           type="button"
           data-cy="reverse"
-          className={`button ${
-            activeSort === 'reverse' ? 'is-primary' : 'is-light'
-          }`}
+          className={`button ${activeSort === 'reverse' ? 'is-primary' : 'is-light'}`}
           onClick={reverseOrder}
         >
           Reverse
