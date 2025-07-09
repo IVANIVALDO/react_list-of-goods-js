@@ -42,24 +42,33 @@ function App() {
     <div className="container mt-5">
       <div className="buttons">
         <button
+          type="button"
           data-cy="sort-alphabetically"
-          className={`button ${activeSort === 'alphabetically' ? 'is-primary' : 'is-light'}`}
+          className={`button ${
+            activeSort === 'alphabetically' ? 'is-primary' : 'is-light'
+          }`}
           onClick={sortAlphabetically}
         >
           Sort alphabetically
         </button>
 
         <button
+          type="button"
           data-cy="sort-by-length"
-          className={`button ${activeSort === 'by-length' ? 'is-primary' : 'is-light'}`}
+          className={`button ${
+            activeSort === 'by-length' ? 'is-primary' : 'is-light'
+          }`}
           onClick={sortByLength}
         >
           Sort by length
         </button>
 
         <button
+          type="button"
           data-cy="reverse"
-          className={`button ${activeSort === 'reverse' ? 'is-primary' : 'is-light'}`}
+          className={`button ${
+            activeSort === 'reverse' ? 'is-primary' : 'is-light'
+          }`}
           onClick={reverseOrder}
         >
           Reverse
@@ -67,6 +76,7 @@ function App() {
 
         {activeSort && (
           <button
+            type="button"
             data-cy="reset"
             className="button is-danger"
             onClick={resetOrder}
@@ -76,13 +86,11 @@ function App() {
         )}
       </div>
 
-      <table className="table is-fullwidth is-striped mt-4">
-        <tbody>
-          {goods.map(item => (
-            <li key={item}>{item}</li>
-          ))}
-        </tbody>
-      </table>
+      <ul className="mt-4">
+        {goods.map(item => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
